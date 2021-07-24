@@ -1,19 +1,15 @@
 import { registerApplication, start } from "single-spa";
 
 registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
+  name: "@mf/navigation",
+  app: () => System.import("//localhost:9001/js/app.js"),
   activeWhen: ["/"],
 });
-
-// registerApplication({
-//   name: "@mf/navbar",
-//   app: () => System.import("@mf/navbar"),
-//   activeWhen: ["/"]
-// });
+registerApplication({
+  name: "@mf/dogs",
+  app: () => System.import("//localhost:9002/js/app.js"),
+  activeWhen: ["/dogs"],
+});
 
 start({
   urlRerouteOnly: true,
