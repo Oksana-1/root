@@ -1,11 +1,12 @@
 import { registerApplication, start } from "single-spa";
+import eventBus from "./eventBus";
 
 registerApplication({
   name: "@mf/navigation",
   app: () => System.import("@mf/navigation"),
   activeWhen: ["/"],
   customProps: () => {
-    return { myPet: "dog" };
+    return { eventBus };
   },
 });
 registerApplication({
@@ -13,7 +14,7 @@ registerApplication({
   app: () => System.import("@mf/dogs"),
   activeWhen: ["/dogs"],
   customProps: () => {
-    return { myPet: "dog" };
+    return { eventBus };
   },
 });
 
